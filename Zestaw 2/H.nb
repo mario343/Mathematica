@@ -1,0 +1,233 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9082,        225]
+NotebookOptionsPosition[      8504,        207]
+NotebookOutlinePosition[      8904,        223]
+CellTagsIndexPosition[      8861,        220]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "x_", "]"}], "=", " ", 
+    RowBox[{
+     RowBox[{"Exp", "[", "x", "]"}], " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"4", " ", "x"}], "]"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{"Manipulate", "[", 
+    RowBox[{
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "newF", "}"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"newF", "[", "x_", "]"}], ":=", 
+         RowBox[{
+          RowBox[{"a", "*", 
+           RowBox[{"f", "[", 
+            RowBox[{"b", "*", 
+             RowBox[{"(", 
+              RowBox[{"x", "-", "c"}], ")"}]}], "]"}]}], "+", "d"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{"OX", ",", 
+          RowBox[{
+           RowBox[{"newF", "[", "x_", "]"}], "=", 
+           RowBox[{"-", 
+            RowBox[{"newF", "[", "x", "]"}]}]}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{"OY", ",", 
+          RowBox[{
+           RowBox[{"newF", "[", "x_", "]"}], "=", 
+           RowBox[{"newF", "[", 
+            RowBox[{"-", "x"}], "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"newF", "[", "x", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+          RowBox[{"PlotRange", "->", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "5"}], ",", "5"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"AxesLabel", "->", 
+           RowBox[{"{", 
+            RowBox[{"\"\<x\>\"", ",", "\"\<f(x)\>\""}], "}"}]}], ",", 
+          RowBox[{"PlotLabel", "->", "\"\<Zmiana wykresu funkcji\>\""}], ",", 
+          RowBox[{"ImageSize", "->", "Medium"}]}], "]"}]}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "1", ",", "\"\<Skala w pionie\>\""}], "}"}], ",", 
+       RowBox[{"-", "5"}], ",", "5", ",", 
+       RowBox[{"Appearance", "->", "Labeled"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"b", ",", "1", ",", "\"\<Skala w poziomie\>\""}], "}"}], ",", 
+       RowBox[{"-", "5"}], ",", "5", ",", 
+       RowBox[{"Appearance", "->", "Labeled"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"c", ",", "1", ",", "\"\<Przesuniecie w poziomie\>\""}], 
+        "}"}], ",", 
+       RowBox[{"-", "5"}], ",", "5", ",", 
+       RowBox[{"Appearance", "->", "Labeled"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"d", ",", "1", ",", "\"\<przesuniecie w pionie\>\""}], "}"}], 
+       ",", 
+       RowBox[{"-", "5"}], ",", "5", ",", 
+       RowBox[{"Appearance", "->", "Labeled"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"OX", ",", "False", ",", "\"\<Odbicie wzgledem OX\>\""}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"False", ",", "True"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"OY", ",", "False", ",", "\"\<Odbicie wzgledem OY\>\""}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"False", ",", "True"}], "}"}]}], "}"}], ",", 
+     RowBox[{"ControlPlacement", "->", "Left"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.906695128334404*^9, 3.906695129283904*^9}, {
+  3.906695191524873*^9, 3.9066952216478615`*^9}, {3.906695258964228*^9, 
+  3.906695260245116*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"0ae7581c-298a-4522-bab0-41237986b4ad"],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["\[ExponentialE]", "x"], " ", 
+  RowBox[{"Sin", "[", 
+   RowBox[{"4", " ", "x"}], "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.906695131239177*^9, 3.906695179663475*^9, {3.906695222968007*^9, 
+   3.9066952264345217`*^9}, 3.9066952620406513`*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"aa38bf14-a79c-4433-b20a-93034278cc29"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.9400000000000004, $CellContext`b$$ =
+     0.7199999999999998, $CellContext`c$$ = 
+    1.9800000000000004`, $CellContext`d$$ = 
+    4.460000000000001, $CellContext`OX$$ = False, $CellContext`OY$$ = False, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`a$$], 1, "Skala w pionie"}, -5, 5}, {{
+       Hold[$CellContext`b$$], 1, "Skala w poziomie"}, -5, 5}, {{
+       Hold[$CellContext`c$$], 1, "Przesuniecie w poziomie"}, -5, 5}, {{
+       Hold[$CellContext`d$$], 1, "przesuniecie w pionie"}, -5, 5}, {{
+       Hold[$CellContext`OX$$], False, "Odbicie wzgledem OX"}, {
+      False, True}}, {{
+       Hold[$CellContext`OY$$], False, "Odbicie wzgledem OY"}, {
+      False, True}}}, Typeset`size$$ = {360., {120., 125.22690217551394`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 1, $CellContext`b$$ = 
+        1, $CellContext`c$$ = 1, $CellContext`d$$ = 1, $CellContext`OX$$ = 
+        False, $CellContext`OY$$ = False}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`newF$}, $CellContext`newF$[
+           Pattern[$CellContext`x$, 
+            
+            Blank[]]] := $CellContext`a$$ $CellContext`f[$CellContext`b$$ \
+($CellContext`x$ - $CellContext`c$$)] + $CellContext`d$$; 
+        If[$CellContext`OX$$, $CellContext`newF$[
+            Pattern[$CellContext`x$, 
+             Blank[]]] = -$CellContext`newF$[$CellContext`x$]]; 
+        If[$CellContext`OY$$, $CellContext`newF$[
+            Pattern[$CellContext`x$, 
+             Blank[]]] = $CellContext`newF$[-$CellContext`x$]]; Plot[
+          $CellContext`newF$[$CellContext`x], {$CellContext`x, -5, 5}, 
+          PlotRange -> {{-5, 5}, {-5, 5}}, AxesLabel -> {"x", "f(x)"}, 
+          PlotLabel -> "Zmiana wykresu funkcji", ImageSize -> Medium]], 
+      "Specifications" :> {{{$CellContext`a$$, 1, "Skala w pionie"}, -5, 5, 
+         Appearance -> 
+         Labeled}, {{$CellContext`b$$, 1, "Skala w poziomie"}, -5, 5, 
+         Appearance -> 
+         Labeled}, {{$CellContext`c$$, 1, "Przesuniecie w poziomie"}, -5, 5, 
+         Appearance -> 
+         Labeled}, {{$CellContext`d$$, 1, "przesuniecie w pionie"}, -5, 5, 
+         Appearance -> 
+         Labeled}, {{$CellContext`OX$$, False, "Odbicie wzgledem OX"}, {
+         False, True}}, {{$CellContext`OY$$, False, "Odbicie wzgledem OY"}, {
+         False, True}}}, "Options" :> {ControlPlacement -> Left}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{711., {150.63403309800196`, 156.36596690199804`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.906695131239177*^9, 3.906695179663475*^9, {3.906695222968007*^9, 
+   3.9066952264345217`*^9}, {3.9066952620738916`*^9, 3.9066952831628137`*^9}},
+ CellLabel->"Out[10]=",ExpressionUUID->"c990e9c4-ec97-42ca-aa06-6bd43d312742"]
+}, Open  ]]
+},
+WindowSize->{1428, 749.25},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"192d5c5a-5e7d-4512-90e8-ed54fd77f85d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 3788, 101, 309, "Input",ExpressionUUID->"0ae7581c-298a-4522-bab0-41237986b4ad"],
+Cell[4371, 125, 363, 8, 32, "Output",ExpressionUUID->"aa38bf14-a79c-4433-b20a-93034278cc29"],
+Cell[4737, 135, 3751, 69, 326, "Output",ExpressionUUID->"c990e9c4-ec97-42ca-aa06-6bd43d312742"]
+}, Open  ]]
+}
+]
+*)
+
