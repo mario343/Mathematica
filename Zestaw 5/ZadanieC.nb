@@ -1,0 +1,906 @@
+(* Content-type: application/vnd.wolfram.player *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       153,          7]
+NotebookDataLength[     33395,        896]
+NotebookOptionsPosition[     31337,        846]
+NotebookOutlinePosition[     32026,        872]
+CellTagsIndexPosition[     31983,        869]
+WindowTitle->Towers of Hanoi - Source
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["", "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False,
+ CellChangeTimes->{{3.9087871944522624`*^9, 3.908787195406789*^9}},
+ FontColor->RGBColor[
+  0.597406, 0, 
+   0.0527047],ExpressionUUID->"0b6e8a98-ce9f-4b51-b4f5-664f42f1dfbb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False,
+ CellChangeTimes->{{3.908787192745356*^9, 
+  3.9087871936393805`*^9}},ExpressionUUID->"d0f524c7-717b-4fb2-9b06-\
+322c6fbf7d03"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"sums", "[", 
+    RowBox[{"s_", ",", "i_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"{", "}"}], "/;", 
+    RowBox[{
+     RowBox[{"s", "<", "i"}], "||", 
+     RowBox[{"i", "\[Equal]", "0"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sums", "[", 
+    RowBox[{"s_", ",", "s_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"Table", "[", 
+     RowBox[{"1", ",", 
+      RowBox[{"{", "s", "}"}]}], "]"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sums", "[", 
+    RowBox[{"s_", ",", "1"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"{", "s", "}"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"sums", "[", 
+   RowBox[{"s_", ",", "i_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Join", "[", 
+            RowBox[{
+             RowBox[{"{", "d", "}"}], ",", "#1"}], "]"}], "&"}], ")"}], "/@", 
+         RowBox[{"sums", "[", 
+          RowBox[{
+           RowBox[{"s", "-", "d"}], ",", 
+           RowBox[{"i", "-", "1"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"d", ",", 
+          RowBox[{"s", "-", "i", "+", "1"}]}], "}"}]}], "]"}], ",", "1"}], 
+     "]"}]}], "]"}]}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->465632763,ExpressionUUID->"dd92e8f0-932d-48ea-b6f5-263ad4eaa0b3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"hanoiP", "[", 
+    RowBox[{"n_", ",", "p_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{"{", 
+         RowBox[{"n", "-", "1"}], "}"}]}], "]"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{"0", ",", 
+        RowBox[{"{", 
+         RowBox[{"p", "-", "n", "-", "1"}], "}"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"2", " ", "n"}], "-", "1"}], "}"}]}], "]"}], "/;", 
+    RowBox[{"n", "<", 
+     RowBox[{"p", "-", "1"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"hanoiP", "[", 
+   RowBox[{"n_", ",", "p_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"hanoiP", "[", 
+    RowBox[{"n", ",", "p"}], "]"}], "=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"v", ",", "t"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"t", "=", 
+       RowBox[{"sums", "[", 
+        RowBox[{
+         RowBox[{"n", "-", "1"}], ",", 
+         RowBox[{"p", "-", "2"}]}], "]"}]}], ";", 
+      RowBox[{"v", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Join", "[", 
+           RowBox[{"#1", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"2", " ", 
+               RowBox[{"Plus", "@@", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"Last", "[", 
+                   RowBox[{"hanoiP", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "#1", "\[LeftDoubleBracket]", "i", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"p", "-", "i", "+", "1"}]}], "]"}], "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", 
+                    RowBox[{"p", "-", "2"}]}], "}"}]}], "]"}]}]}], "+", "1"}],
+              "}"}]}], "]"}], "&"}], ")"}], "/@", "t"}]}], ";", 
+      RowBox[{"First", "[", 
+       RowBox[{"Sort", "[", 
+        RowBox[{"v", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Last", "[", "#2", "]"}], ">", 
+           RowBox[{"Last", "[", "#1", "]"}]}], "&"}]}], "]"}], "]"}]}]}], 
+    "]"}]}]}]}], "Input",
+ CellLabel->"In[5]:=",
+ CellID->55638857,ExpressionUUID->"beded3b9-618e-458b-8efb-4376dc06cbde"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"superHanoi", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "d_", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a_", ",", "___", ",", "b_"}], "}"}]}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"d", ",", "a", ",", "b"}], "}"}]}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->34484665,ExpressionUUID->"8baf9887-fe8e-48e0-8514-7803bec679fa"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"superHanoi", "[", 
+   RowBox[{"{", 
+    RowBox[{"tower_", ",", "pegs_"}], "}"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a", ",", "pat", ",", 
+      RowBox[{"lp", "=", 
+       RowBox[{"Length", "[", "pegs", "]"}]}], ",", "n", ",", 
+      RowBox[{"ans", "=", 
+       RowBox[{"{", "}"}]}], ",", "i", ",", "p", ",", "spread", ",", "back"}],
+      "}"}], ",", 
+    RowBox[{
+     RowBox[{"a", "=", 
+      RowBox[{"Drop", "[", 
+       RowBox[{
+        RowBox[{"hanoiP", "[", 
+         RowBox[{
+          RowBox[{"Length", "[", "tower", "]"}], ",", "lp"}], "]"}], ",", 
+        RowBox[{"-", "1"}]}], "]"}]}], ";", 
+     RowBox[{"pat", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Take", "[", 
+         RowBox[{"tower", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"1", "+", 
+             RowBox[{
+              UnderoverscriptBox["\[Sum]", 
+               RowBox[{"i", "=", "1"}], 
+               RowBox[{"n", "-", "1"}]], 
+              RowBox[{
+              "a", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}]}],
+             ",", 
+            RowBox[{
+             UnderoverscriptBox["\[Sum]", 
+              RowBox[{"i", "=", "1"}], "n"], 
+             RowBox[{
+             "a", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}]}], 
+           "}"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", 
+          RowBox[{"lp", "-", "2"}]}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"spread", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"p", "=", 
+          RowBox[{"Drop", "[", 
+           RowBox[{"pegs", ",", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "n"}], "}"}]}], "]"}]}], ";", 
+         RowBox[{"i", "=", 
+          RowBox[{"Last", "[", "p", "]"}]}], ";", 
+         RowBox[{
+          RowBox[{"p", "\[LeftDoubleBracket]", 
+           RowBox[{"-", "1"}], "\[RightDoubleBracket]"}], "=", 
+          RowBox[{
+          "p", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], ";", 
+         RowBox[{
+          RowBox[{"p", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}],
+           "=", "i"}], ";", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+           "pat", "\[LeftDoubleBracket]", "n", "\[RightDoubleBracket]"}], ",",
+            "p"}], "}"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", 
+          RowBox[{"lp", "-", "2"}]}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"spread", "=", 
+      RowBox[{"Cases", "[", 
+       RowBox[{"spread", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", "__", "}"}], ",", "_"}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"back", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"First", "[", "#1", "]"}], ",", 
+           RowBox[{"Join", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"Last", "[", 
+               RowBox[{"Last", "[", "#1", "]"}], "]"}], "}"}], ",", 
+             RowBox[{"Complement", "[", 
+              RowBox[{
+               RowBox[{"Last", "[", "#1", "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Last", "[", 
+                  RowBox[{"Last", "[", "#1", "]"}], "]"}], ",", 
+                 RowBox[{"Last", "[", "pegs", "]"}]}], "}"}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Last", "[", "pegs", "]"}], "}"}]}], "]"}]}], "}"}], 
+         "&"}], ")"}], "/@", 
+       RowBox[{"Reverse", "[", "spread", "]"}]}]}], ";", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"ans", ",", 
+          RowBox[{"superHanoi", "[", "#1", "]"}]}], "]"}], "&"}], ")"}], "/@",
+       "spread"}], ";", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"ans", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Last", "[", "tower", "]"}], ",", 
+         RowBox[{"First", "[", "pegs", "]"}], ",", 
+         RowBox[{"Last", "[", "pegs", "]"}]}], "}"}]}], "]"}], ";", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"ans", ",", 
+          RowBox[{"superHanoi", "[", "#1", "]"}]}], "]"}], "&"}], ")"}], "/@",
+       "back"}], ";", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "[", "ans", "]"}], ",", "3"}], "]"}]}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[8]:=",
+ CellID->212012085,ExpressionUUID->"d41299e2-1150-4c04-9009-23cd5d40c5a1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"towers", "[", 
+   RowBox[{"numDisks_", ",", "numPegs_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"t", ",", 
+      RowBox[{"sH", "=", 
+       RowBox[{"superHanoi", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Range", "[", "numDisks", "]"}], ",", 
+          RowBox[{"Range", "[", "numPegs", "]"}]}], "}"}], "]"}]}]}], "}"}], 
+    ",", 
+    RowBox[{"FoldList", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"t", "=", "#1"}], ";", 
+         RowBox[{
+          RowBox[{"t", "\[LeftDoubleBracket]", 
+           RowBox[{
+           "#2", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+           "\[RightDoubleBracket]"}], "=", 
+          RowBox[{"Rest", "[", 
+           RowBox[{"t", "\[LeftDoubleBracket]", 
+            RowBox[{
+            "#2", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+            "\[RightDoubleBracket]"}], "]"}]}], ";", 
+         RowBox[{
+          RowBox[{"t", "\[LeftDoubleBracket]", 
+           RowBox[{"Last", "[", "#2", "]"}], "\[RightDoubleBracket]"}], "=", 
+          RowBox[{"Prepend", "[", 
+           RowBox[{
+            RowBox[{"t", "\[LeftDoubleBracket]", 
+             RowBox[{"Last", "[", "#2", "]"}], "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"First", "[", "#2", "]"}]}], "]"}]}], ";", "t"}], ")"}], 
+       "&"}], ",", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Range", "[", "numDisks", "]"}], "}"}], ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"numPegs", "-", "1"}], "}"}]}], "]"}]}], "]"}], ",", 
+      "sH"}], "]"}]}], "]"}]}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->331072270,ExpressionUUID->"8ec8d601-d97f-4bb4-8079-a20250c303dd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"colors", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.53", ",", "0.2", ",", "0.18"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.95", ",", "0.57", ",", "0.38"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.23", ",", "0.46", ",", "0.52"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.71", ",", "0.86", ",", "0.5"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.5", ",", "0.78", ",", "0.78"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.8", ",", "0.78", ",", "0.68"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.33", ",", "0.38", ",", "0.48"}], "]"}], ",", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.85", ",", "0.87", ",", "0.32"}], "]"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellLabel->"In[10]:=",
+ CellID->120531558,ExpressionUUID->"8459581c-a498-49b7-80e6-6bf1882f6c3f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"graphtower", "[", 
+    RowBox[{"n_", ",", "li_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y", "=", 
+       RowBox[{"-", "2"}]}], "}"}], ",", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"RGBColor", "[", 
+            RowBox[{"0.2", ",", "0.4", ",", "0.4"}], "]"}], ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", ".4"}], ",", "0"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{".4", ",", 
+               RowBox[{
+                RowBox[{"2", " ", "n"}], "+", "1"}]}], "}"}]}], "]"}]}], 
+          "}"}], ",", 
+         RowBox[{"Map", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"y", "=", 
+               RowBox[{"y", "+", "2"}]}], ";", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"EdgeForm", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"Black", ",", 
+                   RowBox[{"Thickness", "[", ".025", "]"}]}], "}"}], "]"}], 
+                ",", 
+                RowBox[{"colors", "[", 
+                 RowBox[{"[", "#", "]"}], "]"}], ",", 
+                RowBox[{"Rectangle", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "2"}], " ", "#"}], "+", ".6"}], ",", 
+                    RowBox[{"y", "+", ".05"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"2", " ", "#"}], "-", ".6"}], ",", 
+                    RowBox[{"y", "+", "2"}]}], "}"}]}], "]"}]}], "}"}]}], 
+             ")"}], "&"}], ",", 
+           RowBox[{"Reverse", "[", "li", "]"}]}], "]"}]}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "2"}], " ", "n"}], ",", 
+            RowBox[{"2", " ", "n"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{
+             RowBox[{"2", " ", "n"}], "+", "1"}]}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"AspectRatio", "\[Rule]", "2"}]}], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->101209206,ExpressionUUID->"f17f37c2-84e8-4a83-bdc4-7a0adfbb4ac4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"showtowers", "[", "li_List", "]"}], ":=", 
+  RowBox[{"GraphicsRow", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"graphtower", "[", 
+        RowBox[{
+         RowBox[{"Length", "[", 
+          RowBox[{"Flatten", "[", "li", "]"}], "]"}], ",", "#"}], "]"}], 
+       "&"}], ")"}], "/@", "li"}], ",", 
+    RowBox[{"ImageSize", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"500", ",", "400"}], "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->193672618,ExpressionUUID->"ae44ddfa-b7d4-439b-aeca-71eb819b03fa"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HanoiDiagram", "[", 
+   RowBox[{
+   "NumberOfDisks_", ",", "NumberOfPegs_", ",", "PositionInmoveList_"}], 
+   "]"}], ":=", 
+  RowBox[{"showtowers", "[", 
+   RowBox[{
+    RowBox[{"towers", "[", 
+     RowBox[{"NumberOfDisks", ",", "NumberOfPegs"}], "]"}], "[", 
+    RowBox[{"[", "PositionInmoveList", "]"}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[13]:=",
+ CellID->351985079,ExpressionUUID->"064112e1-b100-4605-81cf-312dde6cbfba"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"PositionInmoveList", ">", 
+       RowBox[{"Length", "@", 
+        RowBox[{"towers", "[", 
+         RowBox[{"NumberOfDisks", ",", "NumberOfPegs"}], "]"}]}]}], ",", 
+      RowBox[{"PositionInmoveList", "=", 
+       RowBox[{"Length", "@", 
+        RowBox[{"towers", "[", 
+         RowBox[{"NumberOfDisks", ",", "NumberOfPegs"}], "]"}]}]}]}], "]"}], 
+    ";", 
+    RowBox[{"HanoiDiagram", "[", 
+     RowBox[{
+     "NumberOfDisks", ",", "NumberOfPegs", ",", "PositionInmoveList"}], 
+     "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"PositionInmoveList", ",", "1", ",", "\"\<position\>\""}], 
+      "}"}], ",", "1", ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "8", ",", "16", ",", "32", ",", "64", ",", "128", ",", "256"}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"6", ",", "10", ",", "14", ",", "18", ",", "26", ",", "34"}],
+          "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"6", ",", "8", ",", "12", ",", "16", ",", "20", ",", "24"}], 
+         "}"}]}], "}"}], "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{"NumberOfPegs", "-", "2"}], ",", 
+        RowBox[{"NumberOfDisks", "-", "2"}]}], "]"}], "]"}], ",", "1"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"NumberOfPegs", ",", "3", ",", "\"\<number of pegs\>\""}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4", ",", "5"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"NumberOfDisks", ",", "4", ",", "\"\<number of disks\>\""}], 
+      "}"}], ",", 
+     RowBox[{"Range", "[", 
+      RowBox[{"3", ",", "8"}], "]"}]}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.3883382540247498`*^9, 3.3883382561809998`*^9}, {
+   3.3883424807903748`*^9, 3.3883424812434998`*^9}, {3.3883441663997498`*^9, 
+   3.3883441667434998`*^9}, {3.388403721311121*^9, 3.388403740451624*^9}},
+ CellLabel->"In[14]:=",
+ CellID->201861619,ExpressionUUID->"91ccad1e-11e1-4d49-a63d-e6230d70587c"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`NumberOfDisks$$ = 
+    4, $CellContext`NumberOfPegs$$ = 3, $CellContext`PositionInmoveList$$ = 
+    15, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`PositionInmoveList$$], 1, "position"}, 1, 
+      Dynamic[
+       Part[{{8, 16, 32, 64, 128, 256}, {6, 10, 14, 18, 26, 34}, {6, 8, 12, 
+        16, 20, 24}}, $CellContext`NumberOfPegs$$ - 
+        2, $CellContext`NumberOfDisks$$ - 2]], 1}, {{
+       Hold[$CellContext`NumberOfPegs$$], 3, "number of pegs"}, {3, 4, 5}}, {{
+       Hold[$CellContext`NumberOfDisks$$], 4, "number of disks"}, {3, 4, 5, 6,
+       7, 8}}}, Typeset`size$$ = {500., {198., 202.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`NumberOfDisks$$ = 
+        4, $CellContext`NumberOfPegs$$ = 3, $CellContext`PositionInmoveList$$ = 
+        1}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (If[$CellContext`PositionInmoveList$$ > Length[
+           $CellContext`towers[$CellContext`NumberOfDisks$$, \
+$CellContext`NumberOfPegs$$]], $CellContext`PositionInmoveList$$ = Length[
+           $CellContext`towers[$CellContext`NumberOfDisks$$, \
+$CellContext`NumberOfPegs$$]]]; \
+$CellContext`HanoiDiagram[$CellContext`NumberOfDisks$$, \
+$CellContext`NumberOfPegs$$, $CellContext`PositionInmoveList$$]), 
+      "Specifications" :> {{{$CellContext`PositionInmoveList$$, 1, 
+          "position"}, 1, 
+         Dynamic[
+          
+          Part[{{8, 16, 32, 64, 128, 256}, {6, 10, 14, 18, 26, 34}, {6, 8, 12,
+            16, 20, 24}}, $CellContext`NumberOfPegs$$ - 
+           2, $CellContext`NumberOfDisks$$ - 2]], 
+         1}, {{$CellContext`NumberOfPegs$$, 3, "number of pegs"}, {3, 4, 
+         5}}, {{$CellContext`NumberOfDisks$$, 4, "number of disks"}, {3, 4, 5,
+          6, 7, 8}}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{548., {266.13403309800196`, 271.86596690199804`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`towers[
+         Pattern[$CellContext`n, 
+          Blank[]]] := FoldList[$CellContext`moveOneDisk, {
+          Range[$CellContext`n], {}, {}}, 
+         $CellContext`moves[$CellContext`n, 1, 3]], $CellContext`towers[
+         Pattern[$CellContext`numDisks, 
+          Blank[]], 
+         Pattern[$CellContext`numPegs, 
+          Blank[]]] := 
+       Module[{$CellContext`t, $CellContext`sH = $CellContext`superHanoi[{
+             Range[$CellContext`numDisks], 
+             Range[$CellContext`numPegs]}]}, 
+         FoldList[($CellContext`t = #; Part[$CellContext`t, 
+             Part[#2, 2]] = Rest[
+             Part[$CellContext`t, 
+              Part[#2, 2]]]; Part[$CellContext`t, 
+             Last[#2]] = Prepend[
+             Part[$CellContext`t, 
+              Last[#2]], 
+             First[#2]]; $CellContext`t)& , 
+          Join[{
+            Range[$CellContext`numDisks]}, 
+           
+           Table[{}, {$CellContext`numPegs - 
+             1}]], $CellContext`sH]], $CellContext`moveOneDisk[
+         Pattern[$CellContext`t, 
+          Blank[]], {
+          Pattern[$CellContext`i, 
+           Blank[]], 
+          Pattern[$CellContext`j, 
+           Blank[]]}] := 
+       Module[{$CellContext`q = $CellContext`t, $CellContext`d}, \
+$CellContext`d = First[
+            Part[$CellContext`q, $CellContext`i]]; 
+         Part[$CellContext`q, $CellContext`i] = Rest[
+            Part[$CellContext`q, $CellContext`i]]; 
+         Part[$CellContext`q, $CellContext`j] = Prepend[
+            
+            Part[$CellContext`q, $CellContext`j], $CellContext`d]; \
+$CellContext`q], $CellContext`moves[1, 
+         Pattern[$CellContext`i, 
+          Blank[]], 
+         Pattern[$CellContext`j, 
+          Blank[]]] := {{$CellContext`i, $CellContext`j}}, $CellContext`moves[
+         Pattern[$CellContext`n, 
+          Blank[]], 
+         Pattern[$CellContext`i, 
+          Blank[]], 
+         Pattern[$CellContext`j, 
+          Blank[]]] := Join[
+         $CellContext`moves[$CellContext`n - 1, $CellContext`i, 
+          6 - $CellContext`i - $CellContext`j], {{$CellContext`i, \
+$CellContext`j}}, 
+         $CellContext`moves[$CellContext`n - 1, 
+          6 - $CellContext`i - $CellContext`j, $CellContext`j]], \
+$CellContext`superHanoi[{{
+           Pattern[$CellContext`d, 
+            Blank[]]}, {
+           Pattern[$CellContext`a, 
+            Blank[]], 
+           BlankNullSequence[], 
+           Pattern[$CellContext`b, 
+            
+            Blank[]]}}] := {$CellContext`d, $CellContext`a, $CellContext`b}, \
+$CellContext`superHanoi[{
+          Pattern[$CellContext`tower, 
+           Blank[]], 
+          Pattern[$CellContext`pegs, 
+           Blank[]]}] := 
+       Module[{$CellContext`a, $CellContext`pat, $CellContext`lp = 
+          Length[$CellContext`pegs], $CellContext`n, $CellContext`ans = {}, \
+$CellContext`i, $CellContext`p, $CellContext`spread, $CellContext`back}, \
+$CellContext`a = Drop[
+            $CellContext`hanoiP[
+             
+             Length[$CellContext`tower], $CellContext`lp], -1]; \
+$CellContext`pat = Table[
+            Take[$CellContext`tower, {1 + Sum[
+                
+                Part[$CellContext`a, $CellContext`i], {$CellContext`i, 
+                 1, $CellContext`n - 1}], 
+              Sum[
+               
+               Part[$CellContext`a, $CellContext`i], {$CellContext`i, 
+                1, $CellContext`n}]}], {$CellContext`n, $CellContext`lp - 
+             2}]; $CellContext`spread = 
+          Table[$CellContext`p = 
+             Drop[$CellContext`pegs, {2, $CellContext`n}]; $CellContext`i = 
+             Last[$CellContext`p]; 
+            Part[$CellContext`p, -1] = Part[$CellContext`p, 2]; 
+            Part[$CellContext`p, 2] = $CellContext`i; {
+              
+              Part[$CellContext`pat, $CellContext`n], $CellContext`p}, \
+{$CellContext`n, $CellContext`lp - 2}]; $CellContext`spread = 
+          Cases[$CellContext`spread, {{
+              BlankSequence[]}, 
+             Blank[]}]; $CellContext`back = Map[{
+             First[#], 
+             Join[{
+               Last[
+                Last[#]]}, 
+              Complement[
+               Last[#], {
+                Last[
+                 Last[#]], 
+                Last[$CellContext`pegs]}], {
+               Last[$CellContext`pegs]}]}& , 
+            Reverse[$CellContext`spread]]; Map[AppendTo[$CellContext`ans, 
+            $CellContext`superHanoi[#]]& , $CellContext`spread]; 
+         AppendTo[$CellContext`ans, {
+            Last[$CellContext`tower], 
+            First[$CellContext`pegs], 
+            Last[$CellContext`pegs]}]; Map[AppendTo[$CellContext`ans, 
+            $CellContext`superHanoi[#]]& , $CellContext`back]; Partition[
+           Flatten[$CellContext`ans], 3]], $CellContext`hanoiP[2, 3] = {1, 
+        3}, $CellContext`hanoiP[3, 3] = {2, 7}, $CellContext`hanoiP[3, 4] = {
+        1, 1, 5}, $CellContext`hanoiP[4, 3] = {3, 15}, $CellContext`hanoiP[
+        4, 4] = {2, 1, 9}, $CellContext`hanoiP[4, 5] = {1, 1, 1, 
+        7}, $CellContext`hanoiP[5, 3] = {4, 31}, $CellContext`hanoiP[6, 3] = {
+        5, 63}, $CellContext`hanoiP[6, 4] = {3, 2, 17}, $CellContext`hanoiP[
+        6, 5] = {3, 1, 1, 15}, $CellContext`hanoiP[7, 3] = {6, 
+        127}, $CellContext`hanoiP[8, 3] = {7, 255}, $CellContext`hanoiP[
+         Pattern[$CellContext`n, 
+          Blank[]], 
+         Pattern[$CellContext`p, 
+          Blank[]]] := Condition[
+         Join[
+          Table[1, {$CellContext`n - 1}], 
+          Table[0, {$CellContext`p - $CellContext`n - 1}], {
+          2 $CellContext`n - 1}], $CellContext`n < $CellContext`p - 
+          1], $CellContext`hanoiP[
+         Pattern[$CellContext`n, 
+          Blank[]], 
+         Pattern[$CellContext`p, 
+          Blank[]]] := ($CellContext`hanoiP[$CellContext`n, $CellContext`p] = 
+        Module[{$CellContext`v, $CellContext`t}, $CellContext`t = \
+$CellContext`sums[$CellContext`n - 1, $CellContext`p - 2]; $CellContext`v = 
+           Map[Join[#, {2 Apply[Plus, 
+                  Table[
+                   Last[
+                    $CellContext`hanoiP[
+                    Part[#, $CellContext`i], $CellContext`p - $CellContext`i + 
+                    1]], {$CellContext`i, $CellContext`p - 2}]] + 
+               1}]& , $CellContext`t]; First[
+            Sort[$CellContext`v, Last[#2] > Last[#]& ]]]), $CellContext`sums[
+         Pattern[$CellContext`s, 
+          Blank[]], 
+         Pattern[$CellContext`i, 
+          Blank[]]] := Condition[{}, 
+         Or[$CellContext`s < $CellContext`i, $CellContext`i == 
+          0]], $CellContext`sums[
+         Pattern[$CellContext`s, 
+          Blank[]], 
+         Pattern[$CellContext`s, 
+          Blank[]]] := {
+         Table[1, {$CellContext`s}]}, $CellContext`sums[
+         Pattern[$CellContext`s, 
+          Blank[]], 1] := {{$CellContext`s}}, $CellContext`sums[
+         Pattern[$CellContext`s, 
+          Blank[]], 
+         Pattern[$CellContext`i, 
+          Blank[]]] := Module[{$CellContext`d}, 
+         Flatten[
+          Table[
+           Map[Join[{$CellContext`d}, #]& , 
+            $CellContext`sums[$CellContext`s - $CellContext`d, $CellContext`i - 
+             1]], {$CellContext`d, $CellContext`s - $CellContext`i + 1}], 
+          1]], $CellContext`HanoiDiagram[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`n, 
+          Blank[]]] := $CellContext`showtowers[
+         Part[
+          $CellContext`towers[$CellContext`m], $CellContext`n]], \
+$CellContext`HanoiDiagram[
+         Pattern[$CellContext`NumberOfDisks, 
+          Blank[]], 
+         Pattern[$CellContext`NumberOfPegs, 
+          Blank[]], 
+         Pattern[$CellContext`PositionInmoveList, 
+          Blank[]]] := $CellContext`showtowers[
+         Part[
+          $CellContext`towers[$CellContext`NumberOfDisks, \
+$CellContext`NumberOfPegs], $CellContext`PositionInmoveList]], \
+$CellContext`showtowers[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]]}] := GraphicsRow[
+         Map[$CellContext`graphtower[
+           Length[
+            
+            Flatten[{$CellContext`a, $CellContext`b, $CellContext`c}]], #]& , \
+{$CellContext`a, $CellContext`b, $CellContext`c}], 
+         ImageSize -> {500, 400}], $CellContext`showtowers[
+         Pattern[$CellContext`li, 
+          Blank[List]]] := GraphicsRow[
+         Map[$CellContext`graphtower[
+           Length[
+            Flatten[$CellContext`li]], #]& , $CellContext`li], 
+         ImageSize -> {500, 400}], $CellContext`graphtower[
+         Pattern[$CellContext`n, 
+          Blank[]], 
+         Pattern[$CellContext`li, 
+          Blank[]]] := Module[{$CellContext`y = -2}, 
+         Graphics[{{
+            RGBColor[0.2, 0.4, 0.4], 
+            Rectangle[{-0.4, 0}, {0.4, 2 $CellContext`n + 1}]}, 
+           Map[($CellContext`y = $CellContext`y + 2; {
+              EdgeForm[{Black, 
+                Thickness[0.025]}], 
+              Part[$CellContext`colors, #], 
+              
+              Rectangle[{(-2) # + 0.6, $CellContext`y + 0.05}, {
+               2 # - 0.6, $CellContext`y + 2}]})& , 
+            Reverse[$CellContext`li]]}, 
+          PlotRange -> {{(-2) $CellContext`n, 2 $CellContext`n}, {
+            0, 2 $CellContext`n + 1}}, AspectRatio -> 
+          2]], $CellContext`colors = {
+         RGBColor[0.53, 0.2, 0.18], 
+         RGBColor[0.95, 0.57, 0.38], 
+         RGBColor[0.23, 0.46, 0.52], 
+         RGBColor[0.71, 0.86, 0.5], 
+         RGBColor[0.5, 0.78, 0.78], 
+         RGBColor[0.8, 0.78, 0.68], 
+         RGBColor[0.33, 0.38, 0.48], 
+         RGBColor[0.85, 0.87, 0.32]}}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.908787206205918*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"ccf72c30-bda8-49e0-9d3d-046edc93ecf1"]
+}, Open  ]]
+}, Open  ]]
+},
+Editable->True,
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+CellInsertionPointCell->None,
+WindowSize->{1440, 755.25},
+WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+WindowElements->{
+ "StatusArea", "MemoryMonitor", "MagnificationPopUp", "VerticalScrollBar", 
+  "MenuBar"},
+WindowTitle->"Towers of Hanoi - Source",
+DockedCells->{},
+CellContext->Notebook,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"919d4ccc-181d-4f4a-b516-88c479977db9"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[591, 21, 250, 6, 62, "Section",ExpressionUUID->"0b6e8a98-ce9f-4b51-b4f5-664f42f1dfbb"],
+Cell[CellGroupData[{
+Cell[866, 31, 211, 5, 44, "Section",ExpressionUUID->"d0f524c7-717b-4fb2-9b06-322c6fbf7d03"],
+Cell[1080, 38, 1470, 49, 116, "Input",ExpressionUUID->"dd92e8f0-932d-48ea-b6f5-263ad4eaa0b3",
+ CellID->465632763],
+Cell[2553, 89, 2291, 69, 149, "Input",ExpressionUUID->"beded3b9-618e-458b-8efb-4376dc06cbde",
+ CellID->55638857],
+Cell[4847, 160, 384, 11, 28, "Input",ExpressionUUID->"8baf9887-fe8e-48e0-8514-7803bec679fa",
+ CellID->34484665],
+Cell[5234, 173, 4557, 129, 465, "Input",ExpressionUUID->"d41299e2-1150-4c04-9009-23cd5d40c5a1",
+ CellID->212012085],
+Cell[9794, 304, 1883, 51, 149, "Input",ExpressionUUID->"8ec8d601-d97f-4bb4-8079-a20250c303dd",
+ CellID->331072270],
+Cell[11680, 357, 951, 23, 78, "Input",ExpressionUUID->"8459581c-a498-49b7-80e6-6bf1882f6c3f",
+ CellID->120531558],
+Cell[12634, 382, 2615, 74, 78, "Input",ExpressionUUID->"f17f37c2-84e8-4a83-bdc4-7a0adfbb4ac4",
+ CellID->101209206],
+Cell[15252, 458, 587, 17, 43, "Input",ExpressionUUID->"ae44ddfa-b7d4-439b-aeca-71eb819b03fa",
+ CellID->193672618],
+Cell[15842, 477, 465, 12, 28, "Input",ExpressionUUID->"064112e1-b100-4605-81cf-312dde6cbfba",
+ CellID->351985079],
+Cell[CellGroupData[{
+Cell[16332, 493, 2253, 62, 116, "Input",ExpressionUUID->"91ccad1e-11e1-4d49-a63d-e6230d70587c",
+ CellID->201861619],
+Cell[18588, 557, 12721, 285, 580, "Output",ExpressionUUID->"ccf72c30-bda8-49e0-9d3d-046edc93ecf1"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
