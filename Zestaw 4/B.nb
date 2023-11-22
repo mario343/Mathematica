@@ -1,0 +1,130 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3841,        120]
+NotebookOptionsPosition[      3259,        102]
+NotebookOutlinePosition[      3668,        118]
+CellTagsIndexPosition[      3625,        115]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "1"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[CurlyPhi]", "=", "\[Phi]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.906816540935093*^9, 3.906816548577153*^9}, {
+  3.906816610054629*^9, 3.9068166283585896`*^9}, {3.906816864005585*^9, 
+  3.906816864219803*^9}, {3.906887962298811*^9, 3.9068879626133595`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"0294c4b1-9080-411a-8ef7-47ade9b469cc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MatrixExp", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"x", "*", "A"}], " ", "+", " ", 
+     RowBox[{"y", "*", " ", "B"}]}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}]}], "]"}], "//", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.906888001572884*^9, 3.9068880252145014`*^9}, {
+  3.906888068192755*^9, 3.906888071409583*^9}, {3.9068881232229743`*^9, 
+  3.9068881251325693`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"5b319c1b-326d-4442-9480-969bd162bc82"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["\[ExponentialE]", "x"], " ", "x", " ", 
+         RowBox[{"Cos", "[", "y", "]"}]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[ExponentialE]", "x"], " ", "y", " ", 
+         RowBox[{"Sin", "[", "y", "]"}]}]}]},
+      {
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["\[ExponentialE]", "x"], " ", "y", " ", 
+         RowBox[{"Cos", "[", "y", "]"}]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[ExponentialE]", "x"], " ", "x", " ", 
+         RowBox[{"Sin", "[", "y", "]"}]}]}]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.906888043003393*^9, {3.906888125660877*^9, 3.906888147161504*^9}},
+ CellLabel->
+  "Out[15]//MatrixForm=",ExpressionUUID->"e812dbe6-c989-463d-967b-\
+29bf780e498c"]
+}, Open  ]]
+},
+WindowSize->{569.25, 624.75},
+WindowMargins->{{Automatic, 79.5}, {26.25, Automatic}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"aea174f1-585d-42e4-8bae-bfa0a3430bae"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 892, 25, 105, "Input",ExpressionUUID->"0294c4b1-9080-411a-8ef7-47ade9b469cc"],
+Cell[CellGroupData[{
+Cell[1475, 49, 516, 12, 43, "Input",ExpressionUUID->"5b319c1b-326d-4442-9480-969bd162bc82"],
+Cell[1994, 63, 1249, 36, 62, "Output",ExpressionUUID->"e812dbe6-c989-463d-967b-29bf780e498c"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
